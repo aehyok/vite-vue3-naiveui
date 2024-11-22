@@ -1,15 +1,23 @@
 <template>
-  <div class="text-red-500 border-2 border-red-500">aehyok</div>
-  <n-button type="primary" @click="() => { count = count + 1 }">{{ count }}</n-button>
+  <div class="w-4 text-red-500 border-2 border-red-500 ">aehyok</div>
+  <el-button type="primary" @click="changeClick">{{ count }}</el-button>
   <router-view />
 </template>
+
 <script setup lang="ts">
-import { NButton } from 'naive-ui'
 import { ref } from 'vue'; 
+import { useRouter } from 'vue-router';
+
+const router = useRouter()
+
+const changeClick = () => {
+  count.value = count.value + 1
+
+  router.push('/login')
+}
 
 const count = ref(0)
 </script>
-
 <style scoped>
 .logo {
   height: 6em;
