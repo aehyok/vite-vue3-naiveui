@@ -1,5 +1,7 @@
 <template>
+  <div class="text-red-500 border-2 border-red-500">aehyok</div>
   <n-button type="primary" @click="() => { count = count + 1 }">{{ count }}</n-button>
+  <router-view />
 </template>
 <script setup lang="ts">
 import { NButton } from 'naive-ui'
