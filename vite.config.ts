@@ -20,5 +20,16 @@ export default defineConfig({
     alias: {
       '@': resolve(__dirname, 'src')
     }
-  }
+  },
+  server: {
+    host: true,
+    port: 8100,
+    proxy: {
+      '/infra': {
+        target: 'http://101.200.243.192:8080',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/infra/, '')
+      }
+    }
+  },
 })
