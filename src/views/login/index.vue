@@ -1,7 +1,3 @@
 <template>
-    <div>
-        <h1>Login</h1>
-    </div>
+    1111
 </template>
-<script setup lang="ts">
-</script>

@@ -11,6 +11,7 @@ const routes = [
         component: () => import(/* webpackChunkName: "home" */ "@/views/home/index.vue"),
         meta: {
             title: "首页",
+            showLayout: true,
         },
     },
     {
@@ -19,6 +20,7 @@ const routes = [
         component: () => import(/* webpackChunkName: "login" */ "@/views/login/index.vue"),
         meta: {
             title: "登录",
+            showLayout: false,
         },
     },
 ]

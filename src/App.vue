@@ -1,22 +1,23 @@
 <template>
-  <div class="w-4 text-red-500 border-2 border-red-500 ">aehyok</div>
-  <el-button type="primary" @click="changeClick">{{ count }}</el-button>
-  <router-view />
+  <router-view v-if="!showLayout" />
+  <Layout v-if="showLayout" />
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'; 
-import { useRouter } from 'vue-router';
+import { ref, watch } from 'vue'; 
+import { useRoute } from 'vue-router';
+import Layout from '@/components/layout/index.vue'
+const route = useRoute()
 
-const router = useRouter()
+const showLayout = ref<boolean>(false)
 
-const changeClick = () => {
-  count.value = count.value + 1
+watch(
+  () => route.path,
+  () => {
+    showLayout.value = route.meta.showLayout as boolean
+  },
+)
 
-  router.push('/login')
-}
-
-const count = ref(0)
 </script>
 <style scoped>
 .logo {
