@@ -59,9 +59,19 @@
     </div>
 </template>
 <script setup lang="ts">
-import { reactive, ref } from 'vue'
+import { reactive, ref, onMounted } from 'vue'
+import { getCaptcha } from "@/api/login.ts"
 
 const formRef = ref()
+
+
+onMounted( async() => {
+  let result = await getCaptcha()
+  console.log(result, "onMounted")
+  if(result.code == 200) {
+    state.vcodeImg = result.data.captcha
+ }
+})
 
 const validatePass = (_rule: any, value: any, callback: any) => {
       if (value === "") {

@@ -27,7 +27,7 @@ instance.interceptors.request.use(
       Authorization: token.token || "",
       "Content-Type": "application/json",
       ...request.headers,
-    }
+    } as any;
     return request
   },
   (error) => {
@@ -127,7 +127,7 @@ instance.interceptors.response.use(
   }
 )
 
-const request = (url, options = {}) => {
+const request = (url: string, options: any = {}) => {
   // 请求方法统一转换成小写
   if (options.method && /[a-z]+/i.test(options.method)) {
     options.method = options.method.toLowerCase()
@@ -142,7 +142,8 @@ const request = (url, options = {}) => {
   errorMessageAlert.value = options.errorMessageAlert ?? ""
 
   if (options.method === "get") {
-    return instance.request(url, {
+    return instance.request({
+      url: url,
       ...options,
       params: {...options.data, ...options.param, ...options.params}
     })
@@ -159,7 +160,7 @@ const request = (url, options = {}) => {
  * @param {String} url [请求的url地址]
  * @param {Object} params [请求时携带的参数]
  */
-export function get(url, params) {
+export function get(url: string, params: any) {
   return new Promise((resolve, reject) => {
     instance
       .get(url, {
@@ -179,10 +180,10 @@ export function get(url, params) {
  * @param {String} url [请求的url地址]
  * @param {Object} params [请求时携带的参数]
  */
-export function post(url, params) {
+export function post(url: string, params: any) {
   return new Promise((resolve, reject) => {
     instance
-      .post(url, QS.stringify(params))
+      .post(url, params)
       .then((res) => {
         resolve(res.data)
       })

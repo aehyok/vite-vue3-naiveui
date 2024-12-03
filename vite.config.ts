@@ -26,7 +26,7 @@ export default defineConfig({
     port: 8100,
     proxy: {
       '/infra': {
-        target: 'http://101.200.243.192:8080',
+        target: 'http://101.200.243.192:624',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/infra/, '')
       }
