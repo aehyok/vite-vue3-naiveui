@@ -56,7 +56,7 @@ instance.interceptors.response.use(
       return response.data
     }
     if (code !== 200) {
-      return Promise.reject(new Error(response.data.message))
+      return Promise.reject(response.data.message)
     }
     return response.data
   },
@@ -123,6 +123,7 @@ instance.interceptors.response.use(
     if (window.location.href.split("?")[0] !== window.location.origin + "/#/login") {
       errorMessageAlert.value ? ElMessage.error(errorMessageAlert.value) : ElMessage.error(error.message)
     }
+    console.log(error, "error-axios")
     return Promise.reject(error)
   }
 )
