@@ -53,6 +53,9 @@
 import { reactive, ref, onMounted } from 'vue'
 import { getCaptcha, login } from "@/api/login"
 import type { FormInstance } from 'element-plus'
+import { useRouter } from 'vue-router';
+
+const router = useRouter();
 
 const formRef = ref<FormInstance>()
 
@@ -166,6 +169,7 @@ const adminLogin = async () => {
           userName: state.loginForm.userName,
         })
       );
+      router.push("/home");
     } else {
       getImageVerifyCode();
     }
