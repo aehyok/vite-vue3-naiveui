@@ -60,6 +60,7 @@ const router = useRouter();
 const formRef = ref<FormInstance>()
 
 onMounted(async () => {
+  checkRemPass();
   await getImageVerifyCode()
 })
 
@@ -134,6 +135,16 @@ const submitForm = (formRefValue: FormInstance | undefined) => {
       adminLogin();
     }
   });
+};
+
+const checkRemPass = () => {
+  const loginRemInfo = localStorage.getItem("loginRemInfo");
+  if (loginRemInfo) {
+    const jsonInof = JSON.parse(loginRemInfo);
+    state.loginForm.userName = jsonInof.userName;
+    state.loginForm.password = (jsonInof.password);
+    state.rememberPasCbox = true;
+  }
 };
 
 // 判断是否需要记住账号密码

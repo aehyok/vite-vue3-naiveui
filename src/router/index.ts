@@ -25,6 +25,42 @@ const routes = [
             showLayout: false,
         },
     },
+    {
+        path: "/test",
+        name: "Test",
+        component: () => import(/* webpackChunkName: "test" */ "@/views/test/index.vue"),
+        meta: {
+            title: "测试页面",
+            showLayout: true,
+        },
+    },
+    {
+        path: "/test1",
+        name: "Test1",
+        component: () => import(/* webpackChunkName: "test1" */ "@/views/test1/index.vue"),
+        meta: {
+            title: "测试页面",
+            showLayout: true,
+        },
+    },
+    {
+        path: "/test2",
+        name: "Test2",
+        component: () => import(/* webpackChunkName: "test2" */ "@/views/test2/index.vue"),
+        meta: {
+            title: "测试页面",
+            showLayout: true,
+        },
+    },
+    {
+        path: "/menu",
+        name: "Menu",
+        component: () => import(/* webpackChunkName: "menu" */ "@/views/menu/index.vue"),
+        meta: {
+            title: "菜单管理",
+            showLayout: true,
+        },
+    }
 ]
 
 const router = createRouter({

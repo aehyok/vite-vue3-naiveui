@@ -1,0 +1,34 @@
+.app-header {
+  background: #093a9b;
+}
+
+.app-header-title {
+  margin-left: 10px;
+}
+
+.app-header-img {
+  width: 30px;
+  height: 30px;
+}
+
+.menu-container {
+  background: #0f2144;
+}
+
+.el-sub-menu__title {
+  font-size: 14px !important;
+}
+
+.el-menu-item.is-active {
+  background: #004ce3 !important;
+}
+
+.el-menu-item.is-active::before {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 4px;
+  content: "";
+  background: #66b1ff;
+}
