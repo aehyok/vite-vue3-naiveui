@@ -1,7 +1,7 @@
 <template>
   <div class="app-header">
     <div class="app-header-left">
-      <img class="app-header-img" src="/public/images/logo.png" alt="" />
+      <img class="app-header-img" src="/images/logo.png" alt="" />
       <div class="app-header-title">国家互联网应用平台</div>
     </div>
     <div class="header-right">
@@ -116,7 +116,7 @@ export default defineComponent({
   },
 });
 </script>
-<style lang="less" scoped>
+<style lang="scss" scoped>
 .app-header {
   display: flex;
   justify-content: space-between;

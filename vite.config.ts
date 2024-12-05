@@ -21,6 +21,14 @@ export default defineConfig({
       '@': resolve(__dirname, './src')
     }
   },
+  // 设置scss的api类型为modern-compiler(暂时移除答应警告The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.)
+  css: {  
+    preprocessorOptions: {
+      scss: {
+        api: 'modern-compiler'
+      }
+    }
+  },
   server: {
     host: true,
     port: 8100,

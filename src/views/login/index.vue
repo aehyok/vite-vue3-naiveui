@@ -193,7 +193,7 @@ const adminLogin = async () => {
   }
 };
 </script>
-<style lang="less" scoped>
+<style lang="scss" scoped>
 :deep(.el-form.form-class) {
   padding: 0 20px;
 }

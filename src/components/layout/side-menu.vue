@@ -168,7 +168,7 @@ export default defineComponent({
 });
 </script>
 
-<style lang="less" scoped>
+<style lang="scss" scoped>
 .scroll-wrap {
   overflow: hidden;
   height: 100%;
