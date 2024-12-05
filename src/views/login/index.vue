@@ -1,7 +1,7 @@
 <template>
-  <div class="w-screen h-screen flex justify-between bg-[url('../../../public/images/login/bg.png')] bg-[100%_100%] ">
+  <div class="w-screen h-screen flex justify-between bg-[url('/images/login/bg.png')] bg-[100%_100%] ">
     <div
-      class="w-[40vw] h-[82vh] bg-[url('../../../public/images/login/bg-left.png')] bg-[100%_100%] bg-no-repeat bg-cover mt-[40px] ml-[39px] max-h-[1081px]">
+      class="w-[40vw] h-[82vh] bg-[url('/images/login/bg-left.png')] bg-[100%_100%] bg-no-repeat bg-cover mt-[40px] ml-[39px] max-h-[1081px]">
     </div>
     <div
       class="absolute top-1/2 right-12 w-[390px] h-[413px] bg-white rounded-2xl translate-y-[-50%] bg-cover opacity-95  border-2 border-green-500">
@@ -11,7 +11,7 @@
           <el-input v-model="state.loginForm.userName" placeholder="登录账号" type="text">
             <template #prefix>
               <img
-                :src="state.loginForm.userName?.length == 0 ? '../../../public/images/login/icon-one.png' : '../../../public/images/login/icon-onel.png'"
+                :src="state.loginForm.userName?.length == 0 ? '/images/login/icon-one.png' : '/images/login/icon-onel.png'"
                 class="project-img" />
             </template>
           </el-input>
@@ -21,7 +21,7 @@
           <el-input v-model="state.loginForm.password" placeholder="登录密码" type="password">
             <template #prefix>
               <img
-                :src="state.loginForm.password.length == 0 ? '../../../public/images/login/icon-two.png' : '../../../public/images/login/icon-twol.png'"
+                :src="state.loginForm.password.length == 0 ? '/images/login/icon-two.png' : '/images/login/icon-twol.png'"
                 class="project-img" />
             </template>
           </el-input>

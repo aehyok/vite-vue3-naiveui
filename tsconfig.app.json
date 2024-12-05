@@ -25,7 +25,8 @@
     "paths": {
       "@/*": ["src/*"]
     },
-    "noUncheckedSideEffectImports": true,
+    // "noUncheckedSideEffectImports": true,
+    "types": ["element-plus/global"]
   },
-  // "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue", "./vite-env.d.ts"]
+  "include": ["vite.config.ts"], // 确保路径正确
 }
