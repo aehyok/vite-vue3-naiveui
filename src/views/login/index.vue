@@ -108,7 +108,7 @@ const state = reactive({
 
 
 const getImageVerifyCode = async () => {
-  let result = await getCaptcha()
+  let result: any = await getCaptcha()
   console.log(result, "onMounted")
   if (result.code == 200) {
     state.captchaImageBase64 = result.data.captcha
@@ -154,18 +154,18 @@ const checkNeedRemPass = () => {
 const adminLogin = async () => {
   try {
     state.loading = true;
-    const { code, data } = await login({
+    const result: any = await login({
       userName: state.loginForm.userName,
       password: state.loginForm.password,
       captchaValue: state.loginForm.captchaValue,
       captchaKey: state.loginForm.captchaKey,
     });
     state.loading = false;
-    if (code === 200) {
+    if (result.code === 200) {
       localStorage.setItem(
         "token",
         JSON.stringify({
-          ...data,
+          ...result.data,
           userName: state.loginForm.userName,
         })
       );

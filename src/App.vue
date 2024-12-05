@@ -3,7 +3,7 @@
   <Layout v-if="showLayout" />
 </template>
 
-<script setup lang="ts">
+<script lang="ts" setup>
 import { ref, watch } from 'vue'; 
 import { useRoute } from 'vue-router';
 import Layout from '@/components/layout/index.vue'

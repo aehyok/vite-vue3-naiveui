@@ -1,6 +1,6 @@
 import { createRouter, createWebHashHistory } from "vue-router";
 import {  NavigationGuardNext } from 'vue-router'
-import NProgress from "@/utils/progress/index";
+import NProgress from "@/utils/progress";
 
 const routes = [
     {
@@ -53,14 +53,6 @@ router.beforeEach((_to, _from, next: NavigationGuardNext) => {
     } else {
         next("/login")
     }
-    // if (!localStorage.getItem("token")) {
-    //     next("/login");
-    //     console.log("-login-")
-    // } else {
-    //     next()
-    // }
-    // next("/login" )
-    next()
 })
 
 /**

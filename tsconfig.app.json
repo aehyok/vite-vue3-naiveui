@@ -21,11 +21,11 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
-    "noUncheckedSideEffectImports": true
+    "baseUrl": "./",
+    "paths": {
+      "@/*": ["src/*"]
+    },
+    "noUncheckedSideEffectImports": true,
   },
-  "baseUrl": ".",
-  "paths": {
-    "@/*": ["src/*"]
-  },
-  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue", "./vite-env.d.ts"]
+  // "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue", "./vite-env.d.ts"]
 }
