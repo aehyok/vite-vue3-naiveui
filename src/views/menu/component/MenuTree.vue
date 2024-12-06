@@ -36,10 +36,7 @@ import {
   ArrowDownBold as ArrowDownBoldIcon
 } from "@element-plus/icons-vue";
 import {computed, nextTick, ref,} from "vue";
-import {getMenu} from "@/views/system/menu/api";
-import {Tree} from "element-plus/es/components/tree-v2/src/types";
-import type Node from "element-plus/es/components/tree/src/model/node";
-
+import { getMenuTreeList } from "@/api/menu";
 const props = withDefaults(defineProps<{
   modelValue: string;
 }>(), {})
@@ -58,7 +55,7 @@ const cutActive = computed({
   }
 })
 const treeProps = {
-  label: "name",
+  label: "title",
   children: "children",
   disabled: "disabled",
   isLeaf: "isLeaf",
@@ -67,15 +64,21 @@ const treeProps = {
 const currentChange = (target: { id: string }) => {
   emits("update:modelValue", target.id)
 }
-const loadNode = (node: Node, resolve: (data: Tree[]) => void) => {
+const loadNode = async(node: any, resolve: (data: any) => void) => {
   if (node.level === 0) {
     nextTick(() => {
       emits('init')
     })
-    return resolve([{name: '主菜单', id: 0, children: []}])
+
+    const result: any = await getMenuTreeList({parentId: 0, parentCode: ''})
+    if(result.code === 200) {
+      return resolve(result.data)
+    } else {
+      return resolve([{title: '暂无菜单', id: 0, children: []}])
+    }
   }
   const parentId = node.data?.id
-  getMenu({parentId}).then(res => {
+  getMenuTreeList({parentId: parentId, parentCode: '', includeChilds: false}).then(res => {
     resolve(res.data)
   })
 }
@@ -88,7 +91,8 @@ $scrollbarWidth: 2px;
   width: calc(100% + #{$scrollbarWidth});
   height: 100%;
   max-height: 100%;
-  overflow: scroll;
+  overflow-y: auto;
+  overflow-x: hidden;
 
   // 滚动条样式
   scrollbar-width: thin;
@@ -130,7 +134,7 @@ $scrollbarWidth: 2px;
     justify-content: space-between;
     align-items: center;
     font-size: 15px;
-    width: 95%;
+    width: 100%;
     height: 100%;
     padding: 0 5% 0 3%;
     color: #333;

@@ -28,5 +28,5 @@
     // "noUncheckedSideEffectImports": true,
     "types": ["element-plus/global"]
   },
-  "include": ["vite.config.ts"], // 确保路径正确
+  // "include": ["vite.config.ts"], // 确保路径正确
 }

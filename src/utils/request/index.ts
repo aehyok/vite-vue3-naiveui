@@ -24,7 +24,7 @@ instance.interceptors.request.use(
     // 过期了刷新token
     const token = localStorage.token ? JSON.parse(localStorage.token) : {}
     request.headers = {
-      Authorization: token.token || "",
+      Authorization: token.accessToken || "",
       "Content-Type": "application/json",
       ...request.headers,
     } as any;
