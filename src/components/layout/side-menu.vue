@@ -143,7 +143,7 @@ export default defineComponent({
         console.log(error);
       }
     };
-    watch(
+    // watch(
       // () => store.state.systemSubMenuList,
       // () => {
       //   const menuList = store.state?.systemSubMenuList;
@@ -155,7 +155,7 @@ export default defineComponent({
       //   immediate: true,
       //   deep: true,
       // }
-    );
+    // );
     onMounted(async () => {
       await getVersionInfo();
     });
