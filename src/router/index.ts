@@ -60,6 +60,15 @@ const routes = [
             title: "菜单管理",
             showLayout: true,
         },
+    },
+    {
+        path: "/univer",
+        name: "Univer",
+        component: () => import(/* webpackChunkName: "univer" */ "@/views/univer/index.vue"),
+        meta: {
+            title: "Excel管理",
+            showLayout: true,
+        },
     }
 ]
 

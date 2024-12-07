@@ -1,29 +1,18 @@
 <template>
   <div class="menu-container">
     <el-scrollbar :noresize="false" class="scroll-wrap" view-style="{ height: '100%' }">
-      <el-menu
-        :background-color="'#0F2144'"
-        :default-active="activeMenu"
-        :router="false"
-        :text-color="'#B7BECC'"
-        :unique-opened="true"
-        active-text-color="#fff"
-      >
+      <el-menu :background-color="'#0F2144'" :default-active="activeMenu" :router="false" :text-color="'#B7BECC'"
+        :unique-opened="true" active-text-color="#fff">
         <template v-for="item in displayMenuTree" :index="item.url || ''">
-          <el-sub-menu
-            v-if="item.children?.length && item?.hasPermission && item.isVisible && item.type === 0"
-            :index="item.url || ''"
-          >
+          <el-sub-menu v-if="item.children?.length && item?.hasPermission && item.isVisible && item.type === 0"
+            :index="item.url || ''">
             <template #title>
               <i :class="item.icon" class="menu-icon" style="margin-right: 5px"></i>
               <span>{{ item.name }}</span>
             </template>
             <template v-for="child in item.children">
-              <el-menu-item
-                v-if="child?.hasPermission && child.isVisible"
-                :index="child.url || ''"
-                @click="handleClickMenu(child)"
-              >
+              <el-menu-item v-if="child?.hasPermission && child.isVisible" :index="child.url || ''"
+                @click="handleClickMenu(child)">
                 <template #title>
                   <i :class="[child.icon ? child.icon : 'fa-solid fa-window-maximize']" style="margin-right: 5px"></i>
                   <span class="menu-title">{{ child.name }}</span>
@@ -31,11 +20,8 @@
               </el-menu-item>
             </template>
           </el-sub-menu>
-          <el-menu-item
-            v-else-if="item?.hasPermission && item.isVisible"
-            :index="item.url || ''"
-            @click="handleClickMenu(item)"
-          >
+          <el-menu-item v-else-if="item?.hasPermission && item.isVisible" :index="item.url || ''"
+            @click="handleClickMenu(item)">
             <i :class="item.icon" class="menu-icon" style="margin-right: 5px"></i>
             <template #title>{{ item.name }}</template>
           </el-menu-item>
@@ -46,8 +32,8 @@
   </div>
 </template>
 <script>
-import {reactive, computed, defineComponent, toRefs, watch, onMounted} from "vue";
-import {useRoute, useRouter} from "vue-router";
+import { reactive, computed, defineComponent, toRefs, watch, onMounted } from "vue";
+import { useRoute, useRouter } from "vue-router";
 
 const locationUrl = process.env.NODE_ENV === "development" ? "https://dvs-dev2.utuapp.cn" : window.location.origin;
 // const parseUrlParams = (url) => {
@@ -75,13 +61,19 @@ export default defineComponent({
     const state = reactive({
       version: "v1.0.0.0",
       displayMenuTree: [
-      {
+        {
           url: "/menu",
           name: "菜单管理",
           isVisible: true,
           hasPermission: true,
-        },  
-      {
+        },
+        {
+          url: "/univer",
+          name: "Excel管理",
+          isVisible: true,
+          hasPermission: true,
+        },
+        {
           url: "/test",
           name: "测试页面",
           isVisible: true,
@@ -99,7 +91,7 @@ export default defineComponent({
           isVisible: true,
           hasPermission: true,
         }
-    ],
+      ],
     });
 
     const activeMenu = computed(() => {
@@ -125,7 +117,7 @@ export default defineComponent({
     // 跳转链接
     const openLink = (data) => {
       if (data.isExternalLink) {
-        const routePath = router.resolve({path: data.url});
+        const routePath = router.resolve({ path: data.url });
         window.open(routePath.href, '_blank');
       } else {
         router.push(data.url)
@@ -134,9 +126,9 @@ export default defineComponent({
 
     const getVersionInfo = async () => {
       try {
-        const {code, data} ={ code: 200, data: { version: "1.0.0.1"} };
+        const { code, data } = { code: 200, data: { version: "1.0.0.1" } };
         if (code === 200) {
-          const {basic} = data;
+          const { basic } = data;
           state.version = basic || "v1.0.0.0";
         }
       } catch (error) {
@@ -144,17 +136,17 @@ export default defineComponent({
       }
     };
     // watch(
-      // () => store.state.systemSubMenuList,
-      // () => {
-      //   const menuList = store.state?.systemSubMenuList;
-      //   if (menuList.length) {
-      //     state.displayMenuTree = menuList || [];
-      //   }
-      // },
-      // {
-      //   immediate: true,
-      //   deep: true,
-      // }
+    // () => store.state.systemSubMenuList,
+    // () => {
+    //   const menuList = store.state?.systemSubMenuList;
+    //   if (menuList.length) {
+    //     state.displayMenuTree = menuList || [];
+    //   }
+    // },
+    // {
+    //   immediate: true,
+    //   deep: true,
+    // }
     // );
     onMounted(async () => {
       await getVersionInfo();

@@ -9,9 +9,7 @@
             </el-aside>
             <el-main class="layoutbox">
                 <div class="main-wrapper" style="position: relative; height: 100%; overflow: auto">
-                <div id="mainwrapper">
                     <router-view />
-                </div>
                 </div>
             </el-main>
         </el-container>
