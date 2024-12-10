@@ -6,17 +6,17 @@
 import { ref, onMounted } from "vue"
 import { createUniver, defaultTheme, LocaleType, Tools } from '@univerjs/presets'
 import { UniverSheetsConditionalFormattingPreset } from '@univerjs/presets/preset-sheets-conditional-formatting'
-import sheetsConditionalFormattingEnUS from '@univerjs/presets/preset-sheets-conditional-formatting/locales/en-US'
+import sheetsConditionalFormattingZhCN from '@univerjs/presets/preset-sheets-conditional-formatting/locales/zh-CN'
 import { UniverSheetsCorePreset } from '@univerjs/presets/preset-sheets-core'
-import sheetsCoreEnUS from '@univerjs/presets/preset-sheets-core/locales/en-US'
+import sheetsCoreZhCN from '@univerjs/presets/preset-sheets-core/locales/zh-CN'
 import { UniverSheetsDataValidationPreset } from '@univerjs/presets/preset-sheets-data-validation'
-import sheetsDataValidationEnUS from '@univerjs/presets/preset-sheets-data-validation/locales/en-US'
+import sheetsDataValidationZhCN from '@univerjs/presets/preset-sheets-data-validation/locales/zh-CN'
 import { UniverSheetsDrawingPreset } from '@univerjs/presets/preset-sheets-drawing'
-import sheetsDrawingEnUS from '@univerjs/presets/preset-sheets-drawing/locales/en-US'
+import sheetsDrawingZhCN from '@univerjs/presets/preset-sheets-drawing/locales/zh-CN'
 import { UniverSheetsFilterPreset } from '@univerjs/presets/preset-sheets-filter'
-import sheetsFilterEnUS from '@univerjs/presets/preset-sheets-filter/locales/en-US'
+import sheetsFilterZhCN from '@univerjs/presets/preset-sheets-filter/locales/zh-CN'
 import { UniverSheetsHyperLinkPreset } from '@univerjs/presets/preset-sheets-hyper-link'
-import sheetsHyperLinkEnUS from '@univerjs/presets/preset-sheets-hyper-link/locales/en-US'
+import sheetsHyperLinkZhCN from '@univerjs/presets/preset-sheets-hyper-link/locales/zh-CN'
 import { WORKBOOK_DATA } from './data'
 
 import '@univerjs/presets/lib/styles/preset-sheets-core.css'
@@ -29,16 +29,16 @@ import '@univerjs/presets/lib/styles/preset-sheets-hyper-link.css'
 
 onMounted(() => {
   const { univerAPI } = createUniver({
-  locale: LocaleType.EN_US,
+  locale: LocaleType.ZH_CN,
   locales: {
-    enUS: Tools.deepMerge(
+    zhCN: Tools.deepMerge(
       {},
-      sheetsCoreEnUS,
-      sheetsConditionalFormattingEnUS,
-      sheetsDataValidationEnUS,
-      sheetsDrawingEnUS,
-      sheetsFilterEnUS,
-      sheetsHyperLinkEnUS,
+      sheetsCoreZhCN,
+      sheetsConditionalFormattingZhCN,
+      sheetsDataValidationZhCN,
+      sheetsDrawingZhCN,
+      sheetsFilterZhCN,
+      sheetsHyperLinkZhCN,
     ),
   },
   theme: defaultTheme,
@@ -59,7 +59,5 @@ univerAPI.createUniverSheet(WORKBOOK_DATA)
 
 </script>
 <style lang="scss" scoped>
-:deep(.univer-workbench-layout){
-  height: 600;
-}
+
 </style>
