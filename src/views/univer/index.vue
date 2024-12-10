@@ -1,8 +1,9 @@
 <template>
-  <div id="univer" style="height:600px;padding: 0;
-      margin: 0;"></div>
+  <div id="univer" style="height:700px;" />
 </template>
+
 <script setup>
+import { ref, onMounted } from "vue"
 import { createUniver, defaultTheme, LocaleType, Tools } from '@univerjs/presets'
 import { UniverSheetsConditionalFormattingPreset } from '@univerjs/presets/preset-sheets-conditional-formatting'
 import sheetsConditionalFormattingEnUS from '@univerjs/presets/preset-sheets-conditional-formatting/locales/en-US'
@@ -25,7 +26,9 @@ import '@univerjs/presets/lib/styles/preset-sheets-drawing.css'
 import '@univerjs/presets/lib/styles/preset-sheets-filter.css'
 import '@univerjs/presets/lib/styles/preset-sheets-hyper-link.css'
 
-const { univerAPI } = createUniver({
+
+onMounted(() => {
+  const { univerAPI } = createUniver({
   locale: LocaleType.EN_US,
   locales: {
     enUS: Tools.deepMerge(
@@ -40,7 +43,9 @@ const { univerAPI } = createUniver({
   },
   theme: defaultTheme,
   presets: [
-    UniverSheetsCorePreset(),
+    UniverSheetsCorePreset({
+      container: "univer"
+    }),
     UniverSheetsConditionalFormattingPreset(),
     UniverSheetsDataValidationPreset(),
     UniverSheetsDrawingPreset(),
@@ -50,4 +55,11 @@ const { univerAPI } = createUniver({
 })
 
 univerAPI.createUniverSheet(WORKBOOK_DATA)
+})
+
 </script>
+<style lang="scss" scoped>
+:deep(.univer-workbench-layout){
+  height: 600;
+}
+</style>
